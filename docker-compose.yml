@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  mysql:
+    image: docker.io/bitnami/mysql:8.0
+    ports:
+      - '3306:3306'
+    environment:
+      # ALLOW_EMPTY_PASSWORD is recommended only for development.
+      - ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_PORT_NUMBER=3306
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=test
+      - MYSQL_DATABASE=test_db
+      - MYSQL_CHARACTER_SET=utf8mb4
+      - MYSQL_COLLATE=utf8mb4_general_ci
+      - TZ=Asia/Tokyo
+    volumes:
+      - 'mysql_data:/bitnami/mysql'
+
+volumes:
+  mysql_data:
+    driver: local
