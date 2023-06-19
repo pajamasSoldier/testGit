@@ -35,21 +35,41 @@ test('addition operator', () => {
     expect(selectedUsers[1].age).toBe(36);
     expect(first.age).toBe(26);
 
+    //関数の演習問題
+    let message :string = "";
     const multipleOf15 :string[] = [];
-    for (let i= 1; i <= 100; i++) {
+    function getFizzBuzzString(i: number) {
         if (i % 3 ===0 && i % 5 === 0) {
-            multipleOf15.push("FizzBuzz");
+            message = "FizzBuzz";
         } else if (i % 3 === 0) {
-            multipleOf15.push("Fizz");
+            message = "Fizz";
         } else if (i % 5 === 0) {
-            multipleOf15.push("Buzz");
+            message = "Buzz";
         } else {
-            multipleOf15.push(String(i));
+            message = String(i);
         }
+    }
+    /*
+    for (let i= 1; i <= 100; i++) {
+        getFizzBuzzString(i);
+        multipleOf15.push(message);
     }
 
     expect(multipleOf15[14]).toBe("FizzBuzz");
+    */
 
-
+    //sequence関数
+    function sequence(start: number, end: number): number[]{
+        const result: number[] = [];
+        for (let i = start; i <= end; i++){
+            result.push(i);
+        }
+        return result;
+    }
+    for(const i of sequence(1, 100)){
+        getFizzBuzzString(i);
+        multipleOf15.push(message);
+    }
+    expect(multipleOf15[13]).toBe("14");
 
 });
