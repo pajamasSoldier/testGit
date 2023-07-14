@@ -1,3 +1,4 @@
+import { type } from 'os';
 import { expect, test } from 'vitest';
 import { resourceLimits } from 'worker_threads';
 
@@ -72,4 +73,65 @@ test('addition operator', () => {
     }
     expect(multipleOf15[13]).toBe("14");
 
+    //クラス式の練習
+    const User1 = class {
+        constructor(public name: string, public age: number){}
+        public isAdult(): boolean {
+            return this.age >= 20;
+        }
+    };
+    const uhyo = new User1('uhyo', 26);
+    expect(uhyo.isAdult()).toBe(true);
+
+    //型引数を持つクラス
+    class User2<T> {
+        name: string;
+        #age: number;
+        readonly data: T;
+
+        constructor(name: string, age: number, data: T){
+            this.name = name;
+            this.#age = age;
+            this.data = data;
+        }
+
+        public isAdult(): boolean {
+            return this.#age >= 20;
+        }
+    }
+    const urano = new User2<string>('urano', 26, '追加データ');
+    const data = urano.data;
+
+    //instanceof演算子の実例
+    type HasAge = {
+        age: number;
+    }
+    class User3 {
+        name: string;
+        age: number;
+
+        constructor (name: string, age: number){
+            this.name = name;
+            this.age  = age;
+        }
+    }
+
+    function getPrice(customer: HasAge) {
+        if(customer instanceof User3) {
+            if(customer.name === "umyo"){
+                return 0;
+            }
+        }
+        return customer.age < 18 ? 1000 : 1800;
+    }
+
+    const customer1: HasAge = { age: 15 };
+    const customer2: HasAge = { age: 40 };
+    const umyo = new User3('umyo', 26);
+
+    expect(getPrice(customer1)).toBe(1000);
+    expect(getPrice(customer2)).toBe(1800);
+    expect(getPrice(umyo)).toBe(0);
 });
+
+
