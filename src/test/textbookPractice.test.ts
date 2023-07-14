@@ -72,4 +72,34 @@ test('addition operator', () => {
     }
     expect(multipleOf15[13]).toBe("14");
 
+    //クラス式の練習
+    const User1 = class {
+        constructor(public name: string, public age: number){}
+        public isAdult(): boolean {
+            return this.age >= 20;
+        }
+    };
+    const uhyo = new User1('uhyo', 26);
+    expect(uhyo.isAdult()).toBe(true);
+
+    //型引数を持つクラス
+    class User2<T> {
+        name: string;
+        #age: number;
+        readonly data: T;
+
+        constructor(name: string, age: number, data: T){
+            this.name = name;
+            this.#age = age;
+            this.data = data;
+        }
+
+        public isAdult(): boolean {
+            return this.#age >= 20;
+        }
+    }
+    const urano = new User2<string>('urano', 26, '追加データ');
+    const data = urano.data;
 });
+
+
