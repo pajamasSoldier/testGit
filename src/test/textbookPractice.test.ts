@@ -73,7 +73,6 @@ test('addition operator', () => {
     }
     expect(multipleOf15[13]).toBe("14");
 
-<<<<<<< HEAD
     //クラス式の練習
     const User1 = class {
         constructor(public name: string, public age: number){}
@@ -133,6 +132,4 @@ test('addition operator', () => {
     expect(getPrice(customer1)).toBe(1000);
     expect(getPrice(customer2)).toBe(1800);
     expect(getPrice(umyo)).toBe(0);
-=======
->>>>>>> parent of 58645a3 (0719_テキスト5.2.1)
 });
