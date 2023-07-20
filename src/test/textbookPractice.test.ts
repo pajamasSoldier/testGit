@@ -132,4 +132,48 @@ test('addition operator', () => {
     expect(getPrice(customer1)).toBe(1000);
     expect(getPrice(customer2)).toBe(1800);
     expect(getPrice(umyo)).toBe(0);
+
+    //classの継承
+    class User4 {
+        name: string;
+        #age: number;
+
+        constructor(name: string, age: number) {
+            this.name = name;
+            this.#age = age;
+        }
+        public isAdult(): boolean {
+            return this.#age >= 20;
+        }
+    }
+
+    class PremiumUser extends User4 {
+        rank: number = 1;
+        public override isAdult(): boolean {
+            return true;
+        }
+    }
+    const unyo = new PremiumUser('unyo', 26);
+    const john = new PremiumUser('john', 16);
+
+    class SuperPremierUser extends User4 {
+        rank: number;
+
+        constructor (name: string, age: number, rank: number) {
+            super(name, age);
+            this.rank = rank;
+        }
+    }
+    const ubyo =new SuperPremierUser('ubyo', 25, 4);
+
+    function getMessage(u: User) {
+        return `Hello, ${u.name}.`;
+    }
+
+    expect(unyo.rank).toBe(1);
+    expect(getMessage(unyo)).toBe('Hello, unyo.');
+    expect(john.isAdult()).toBe(true);
+    expect(ubyo.rank).toBe(4);
+
+
 });
