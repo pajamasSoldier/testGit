@@ -15,11 +15,13 @@
     "decl": "npx tsc --emitDeclarationOnly",
     "format": "npx prettier --write ./src",
     "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build"
+    "storybook:build": "storybook build",
+    "doc": "typedoc --entryPointStrategy expand ./src"
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "typedoc": "^0.24.8"
   },
   "devDependencies": {
     "@chakra-ui/icons": "^2.0.19",

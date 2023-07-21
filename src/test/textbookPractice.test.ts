@@ -166,7 +166,7 @@ test('addition operator', () => {
     }
     const ubyo =new SuperPremierUser('ubyo', 25, 4);
 
-    function getMessage(u: User) {
+    function getMessage(u: User4) {
         return `Hello, ${u.name}.`;
     }
 
