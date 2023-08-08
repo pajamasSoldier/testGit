@@ -175,5 +175,18 @@ test('addition operator', () => {
     expect(john.isAdult()).toBe(true);
     expect(ubyo.rank).toBe(4);
 
+    //try-catch文
+    function throwError() {
+        const error = new Error('エラー発生');
+        throw error;
+    }
+    //throwError();
+
+    try{
+        throwError();
+    } catch (err) {
+        console.log(err);
+    }
+
 
 });
